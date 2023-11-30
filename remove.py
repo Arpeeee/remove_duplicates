@@ -12,8 +12,8 @@ def delete_duplicates():
         # Remove 'count' from the dictionary
         duplicate.pop('count')
         duplicate_ids = (
-            CaseMountain.objects.filter(**duplicate)
+            Mymodel.objects.filter(**duplicate)
             .values_list('id', flat=True)
         )
         # Keep the first one, delete the rest
-        CaseMountain.objects.filter(id__in=duplicate_ids[1:]).delete()
+        Mymodel.objects.filter(id__in=duplicate_ids[1:]).delete()
